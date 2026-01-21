@@ -1,16 +1,40 @@
-# task2_nanneboyinasrujanyadav_gsoc2026
+# Liquid Galaxy Flutter Controller - GSoC 2026 Task 2
 
-A new Flutter project.
+**Author:** Nanneboyina Srujan Yadav  
+**Organization:** Liquid Galaxy Project  
 
-## Getting Started
+##  Description
+This Flutter application serves as a controller for a Liquid Galaxy (LG) Rig. It establishes an SSH/SFTP connection to the Liquid Galaxy Master machine and allows the user to send commands and KML files to visualize content on the rig.
 
-This project is a starting point for a Flutter application.
+This project was developed as part of the **Google Summer of Code (GSoC) 2026** selection tasks.
 
-A few resources to get you started if this is your first Flutter project:
+##  Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 1. SSH Connection Manager
+- Allows users to input the Liquid Galaxy Master's **IP Address**, **Port**, **Username**, and **Password**.
+- Establishes a secure connection using the SSH2 client.
+- Provides visual feedback on connection status (Connected/Disconnected).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 2. Display Logo (Slave Screen)
+- **Action:** Sends the Liquid Galaxy logo (`lg_logo.png`) to the **Left-most Screen** (Slave).
+- **Technical Logic:** - Uploads the image via SFTP to `/var/www/html/`.
+  - Creates a KML file (`slave_3.kml`) in the synced `kml/` folder.
+  - The Master automatically syncs this to the Slave screen, which displays the overlay immediately.
+
+### 3. Display Pyramid (Master Screen)
+- **Action:** Draws a 3D Green Pyramid around a specific location (Visakhapatnam).
+- **Technical Logic:** - Generates the KML code for a `<Polygon>` shape.
+  - Uploads the file as `pyramid.kml`.
+  - Updates the `kmls.txt` "playlist" on the Master to instruct Google Earth to load this specific file.
+
+##  Tech Stack
+- **Framework:** Flutter (Dart)
+- **Communication:** SSH & SFTP
+- **Visualization:** KML (Keyhole Markup Language)
+
+##  Installation & Setup
+
+1. **Clone the Repository**
+   ```bash
+   git clone <your-repo-url>
+   cd task2_nanneboyinasrujanyadav_gsoc2026
