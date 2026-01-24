@@ -76,7 +76,6 @@ class LgService {
   //  SEND LOGO (To Left Slave)
   // ==========================================
   Future<void> sendLogo(int totalScreens) async {
-    // 1. Upload the image file first (Offline support)
     try {
       // Fetch the raw image file from the app's assets into memory
       final ByteData data = await rootBundle.load('assets/lg_logo.png');
@@ -135,7 +134,7 @@ class LgService {
         '''<?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>Srujan Pyramid</name>
+    <name> Pyramid</name>
     <Style id="pStyle">
       <PolyStyle><color>7f00ff00</color><outline>1</outline></PolyStyle>
     </Style>
